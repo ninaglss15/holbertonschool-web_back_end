@@ -3,4 +3,13 @@
 
 
 def concat(str1: str, str2: str) -> str:
+    """Concatenate two strings together.
+
+    Args:
+        str1: The first string.
+        str2: The second string.
+
+    Returns:
+        The concatenation of str1 and str2.
+    """
     return str1 + str2
