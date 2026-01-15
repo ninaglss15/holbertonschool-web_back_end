@@ -7,7 +7,6 @@ function countStudents(path) {
         reject(new Error('Cannot load the database'));
         return;
       }
-      
       try {
         const lines = data.split('\n').filter((line) => line.trim() !== '');
         const students = lines.slice(1);
@@ -16,11 +15,8 @@ function countStudents(path) {
           reject(new Error('Cannot load the database'));
           return;
         }
-        
         console.log(`Number of students: ${students.length}`);
-        
         const fields = {};
-        
         students.forEach((line) => {
           const [firstname, , , field] = line.split(',');
           if (firstname && field) {
@@ -30,12 +26,10 @@ function countStudents(path) {
             fields[field].push(firstname);
           }
         });
-        
         Object.keys(fields).forEach((field) => {
           const studentList = fields[field];
           console.log(`Number of students in ${field}: ${studentList.length}. List: ${studentList.join(', ')}`);
         });
-        
         resolve();
       } catch (error) {
         reject(new Error('Cannot load the database'));
@@ -43,5 +37,4 @@ function countStudents(path) {
     });
   });
 }
-
 module.exports = countStudents;
