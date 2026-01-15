@@ -10,14 +10,15 @@ app.get('/', (req, res) => {
 
 app.get('/students', async (req, res) => {
   const output = ['This is the list of our students'];
-  
+
   try {
     const originalLog = console.log;
     const logs = [];
     console.log = (msg) => logs.push(msg);
+
     await countStudents(database);
+
     console.log = originalLog;
-    
     output.push(...logs);
     res.send(output.join('\n'));
   } catch (error) {
@@ -27,5 +28,4 @@ app.get('/students', async (req, res) => {
 });
 
 app.listen(1245);
-
 module.exports = app;
